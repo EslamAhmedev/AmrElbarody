@@ -1,3 +1,4 @@
+
 :root {
   --cyan: #00c9df;
   --navy: #062c3a;
@@ -528,7 +529,6 @@ main {
   background: #f8fdfe;
 }
 
-/* الثلاثة جنب بعض */
 .supervisor-groups {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -591,11 +591,6 @@ main {
   min-width: 0;
 }
 
-/*
-   مهم:
-   أيقونة المشرف داخل القائمة تكون صغيرة
-   بدل ما تأخذ حجم icon-box الكبير
-*/
 .people-list > div > .icon-box {
   width: 33px;
   min-width: 33px;
@@ -609,7 +604,6 @@ main {
   flex: 1;
 }
 
-/* رقم الهاتف في الجهة المقابلة */
 .people-list .phone {
   margin-right: auto;
   flex-shrink: 0;
@@ -680,10 +674,7 @@ main {
 
 .centers-grid {
   display: grid;
-
-  /* الثلاثة نفس العرض */
   grid-template-columns: repeat(3, minmax(0, 1fr));
-
   gap: 20px;
   align-items: stretch;
 }
@@ -1195,17 +1186,10 @@ footer i {
     height: 290px;
   }
 
-  /*
-     هنا على الشاشات المتوسطة نخلي
-     المشرفين عمودين فقط
-  */
   .supervisor-groups {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  /*
-     والسناتر عمودين
-  */
   .centers-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -1259,9 +1243,6 @@ footer i {
     grid-template-columns: 1fr;
   }
 
-  /*
-     المشرفين على الموبايل تحت بعض
-  */
   .group-card {
     width: 100%;
   }
@@ -1301,10 +1282,6 @@ footer i {
     width: 100%;
   }
 
-  /*
-     رقم الهاتف يفضل يظل واضح
-     ولا يكسر التصميم على الموبايل
-  */
   .people-list > div {
     gap: 8px;
   }
@@ -1320,4 +1297,57 @@ footer i {
   .hero-actions {
     flex-wrap: wrap;
   }
+}
+
+/* =========================
+   محمد - الكارت المميز
+========================= */
+
+.people-list > .featured-supervisor {
+  position: relative;
+  border: 1px solid #d9b44a;
+  border-radius: 10px;
+  background: #fffdf5;
+  box-shadow: 0 3px 12px #d9b44a22;
+  cursor: pointer;
+
+  /* زيادة المساحة بين المحتوى والـ golden border */
+  padding: 14px 12px;
+}
+
+/* أيقونة محمد */
+.people-list > .featured-supervisor > .icon-box {
+  background: #fff4c7;
+  color: #c49718;
+  border: 1px solid #e3c45c;
+}
+
+/* اسم محمد */
+.people-list > .featured-supervisor b {
+  color: #8c6a08;
+}
+
+/* رقم الهاتف */
+.people-list > .featured-supervisor .supervisor-phone {
+  color: #b28712;
+}
+
+/* شارة منصة */
+.people-list > .featured-supervisor .platform-badge {
+  position: absolute;
+  top: -8px;
+  right: 10px;
+  padding: 1px 7px;
+  border-radius: 10px;
+  background: #d4af37;
+  color: white;
+  font-size: 7px;
+  font-weight: 800;
+  line-height: 1.6;
+}
+
+/* Hover */
+.people-list > .featured-supervisor:hover {
+  border-color: #c49a20;
+  box-shadow: 0 5px 16px #d9b44a35;
 }
