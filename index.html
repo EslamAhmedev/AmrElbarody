@@ -1,0 +1,1453 @@
+```html
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="icon" type="image/png" href="Images/profile.png">
+
+  <title>مستر عمرو البارودي | هيرتز الفيزياء</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=Alexandria:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+  <link rel="stylesheet" href="styles.css">
+
+  <style>
+    .about-copy .inline-link{
+      color:#00a9c0;
+      font-weight:700;
+      border-bottom:1px solid currentColor;
+      transition:color .25s,background-color .25s,border-color .25s;
+      padding:0 2px
+    }
+
+    .about-copy .inline-link:hover{
+      color:#ed7b45;
+      background:#fff2eb;
+      border-color:#ed7b45
+    }
+
+    .circuit-diagram{
+      direction:ltr;
+      position:absolute;
+      z-index:2;
+      top:34px;
+      left:7vw;
+      width:310px;
+      height:116px;
+      color:#187c89;
+      font-family:Alexandria,Arial,sans-serif;
+      opacity:.92
+    }
+
+    .circuit-title{
+      position:absolute;
+      top:0;
+      left:82px;
+      margin:0;
+      color:#35919d;
+      font-size:9px;
+      font-weight:700;
+      letter-spacing:.3px
+    }
+
+    .ohm-law{
+      position:absolute;
+      top:0;
+      right:0;
+      background:#fff;
+      padding:2px 7px;
+      border:1px solid #bdebf0;
+      border-radius:6px;
+      font:700 11px Georgia;
+      color:#078ea2
+    }
+
+    .wire{
+      position:absolute;
+      background:#57bac5;
+      border-radius:4px;
+      box-shadow:0 0 0 1px #fff
+    }
+
+    .wire.top{
+      top:49px;
+      left:45px;
+      width:220px;
+      height:3px
+    }
+
+    .wire.right{
+      top:49px;
+      right:44px;
+      width:3px;
+      height:43px
+    }
+
+    .wire.bottom{
+      bottom:22px;
+      left:45px;
+      width:220px;
+      height:3px
+    }
+
+    .wire.left{
+      top:49px;
+      left:45px;
+      width:3px;
+      height:43px
+    }
+
+    .battery{
+      position:absolute;
+      left:27px;
+      top:59px;
+      width:38px;
+      height:25px;
+      border:2px solid #168b9b;
+      border-radius:4px;
+      background:#effdff;
+      box-shadow:0 0 0 3px #effdff
+    }
+
+    .battery:before{
+      display:none
+    }
+
+    .battery:after{
+      content:"";
+      display:block;
+      position:absolute;
+      top:7px;
+      left:auto;
+      right:-7px;
+      width:5px;
+      height:9px;
+      border:0;
+      border-radius:0 2px 2px 0;
+      background:#168b9b
+    }
+
+    .battery::marker{
+      display:none
+    }
+
+    .wire.left{
+      z-index:-1
+    }
+
+    .top-resistor{
+      position:absolute;
+      z-index:2;
+      top:39px;
+      left:126px;
+      width:72px;
+      height:22px;
+      background:#078fa1;
+      clip-path:polygon(
+        0 46%,
+        11% 2%,
+        22% 94%,
+        33% 2%,
+        44% 94%,
+        55% 2%,
+        66% 94%,
+        77% 2%,
+        88% 94%,
+        100% 46%,
+        100% 58%,
+        88% 100%,
+        77% 8%,
+        66% 100%,
+        55% 8%,
+        44% 100%,
+        33% 8%,
+        22% 100%,
+        11% 8%,
+        0 58%
+      );
+      filter:drop-shadow(0 0 2px #00c9df)
+    }
+
+    .diode{
+      position:absolute;
+      z-index:2;
+      top:83px;
+      left:137px;
+      width:52px;
+      height:22px;
+      background:#effdff
+    }
+
+    .diode:before{
+      content:"";
+      position:absolute;
+      top:1px;
+      right:4px;
+      width:0;
+      height:0;
+      border-top:10px solid transparent;
+      border-bottom:10px solid transparent;
+      border-right:22px solid #078fa1;
+      filter:drop-shadow(0 0 1px #00c9df)
+    }
+
+    .diode:after{
+      content:"";
+      position:absolute;
+      top:0;
+      left:8px;
+      width:3px;
+      height:22px;
+      background:#078fa1;
+      border-radius:2px
+    }
+
+    .current-dot{
+      position:absolute;
+      z-index:4;
+      width:8px;
+      height:8px;
+      border-radius:50%;
+      background:#ffd028;
+      box-shadow:0 0 8px 3px #ffd028aa;
+      offset-path:path(
+        'M 65 50 H 265 V 93 H 45 V 50 H 65'
+      );
+      offset-rotate:0deg;
+      animation:current-flow 4s linear infinite
+    }
+
+    .current-dot:after{
+      content:"⚡";
+      position:absolute;
+      top:-8px;
+      left:-2px;
+      color:#efae00;
+      font-size:12px
+    }
+
+    @keyframes current-flow{
+      to{
+        offset-distance:100%
+      }
+    }
+
+    .circuit-diagram{
+      right:3vw;
+      left:auto
+    }
+
+    .current-zigzag{
+      position:absolute;
+      top:39px;
+      left:70px;
+      width:105px;
+      overflow:hidden;
+      white-space:nowrap;
+      color:#ffc928;
+      font-size:16px;
+      letter-spacing:4px;
+      line-height:1;
+      text-shadow:0 0 7px #ffcc2e;
+      animation:zigzag-flow 1.8s linear infinite
+    }
+
+    @keyframes zigzag-flow{
+      50%{
+        transform:translateX(10px);
+        opacity:.55
+      }
+
+      100%{
+        transform:translateX(0)
+      }
+    }
+
+    .map-link{
+      color:inherit;
+      border-bottom:1px solid transparent;
+      transition:color .22s,border-color .22s
+    }
+
+    .map-link:hover{
+      color:#00a9c0;
+      border-color:#00a9c0
+    }
+
+    /* أرقام تليفونات المشرفين */
+
+    .people-list > div{
+      display:flex;
+      align-items:center;
+      gap:10px;
+    }
+
+    .supervisor-phone{
+      margin-right:auto;
+      direction:ltr;
+      color:#049bb0;
+      font-size:10px;
+      font-weight:700;
+      white-space:nowrap;
+    }
+
+    @media(max-width:900px){
+
+      .circuit-diagram{
+        right:4vw;
+        left:auto;
+        transform:scale(.82);
+        transform-origin:right top
+      }
+
+    }
+
+    @media(max-width:620px){
+
+      .circuit-diagram{
+        display:none
+      }
+
+    }
+  </style>
+</head>
+
+<body>
+
+  <button class="menu-button"
+          aria-label="فتح القائمة"
+          aria-expanded="false">
+
+    <i class="fa-solid fa-bars-staggered"></i>
+
+  </button>
+
+
+  <div class="overlay"></div>
+
+
+  <aside class="sidebar">
+
+    <a class="brand" href="#home">
+
+      <span class="brand-icon">
+
+        <img src="Images/profile.png"
+             alt="شعار مستر عمرو"
+             style="width:100%;height:100%;object-fit:cover;border-radius:14px">
+
+      </span>
+
+      <span>
+
+        AMR <b>ELBARODY</b>
+
+        <small>PHYSICS</small>
+
+      </span>
+
+    </a>
+
+
+    <nav class="nav-links">
+
+      <a class="active" href="#home">
+        <i class="fa-solid fa-house"></i>
+        الرئيسية
+      </a>
+
+      <a href="#about">
+        <i class="fa-solid fa-user-astronaut"></i>
+        عن المستر
+      </a>
+
+      <a href="#supervisors">
+        <i class="fa-solid fa-users"></i>
+        المشرفون
+      </a>
+
+      <a href="#centers">
+        <i class="fa-solid fa-location-dot"></i>
+        السناتر
+      </a>
+
+      <a href="#contact">
+        <i class="fa-solid fa-paper-plane"></i>
+        تواصل معنا
+      </a>
+
+    </nav>
+
+
+    <div class="sidebar-card">
+
+      <span>نحوّل المعادلات إلى متعة</span>
+
+      <div class="orbit">
+        <b></b>
+        <i></i>
+      </div>
+
+    </div>
+
+
+    <p class="copyright">
+      © 2026 مستر عمرو البارودي
+    </p>
+
+  </aside>
+
+
+  <main>
+
+
+    <!-- HERO -->
+
+    <section id="home" class="hero section">
+
+      <div class="science-lines"></div>
+
+
+      <div class="circuit-diagram"
+           aria-label="دائرة كهربائية بها بطارية ومقاومة ودايود وتيار متحرك">
+
+        <span class="wire top"></span>
+        <span class="wire right"></span>
+        <span class="wire bottom"></span>
+        <span class="wire left"></span>
+
+        <span class="top-resistor"
+              aria-label="مقاومة كهربائية">
+        </span>
+
+        <span class="diode"
+              aria-label="دايود كهربائي">
+        </span>
+
+        <span class="battery"></span>
+
+        <span class="current-dot"></span>
+
+      </div>
+
+
+      <span class="particle p1">+</span>
+      <span class="particle p2">E</span>
+      <span class="particle p3">∑</span>
+
+
+      <div class="hero-text">
+
+        <p class="eyebrow">
+
+          <span></span>
+
+          مدرس الفيزياء للثانوية العامة
+
+        </p>
+
+
+        <h1>
+          افهم الفيزياء
+        </h1>
+
+
+        <p class="hero-description">
+
+          هنخليك تفهم قوانين الكون وتجيب الفيزيا في شوال.
+
+        </p>
+
+
+        <div class="hero-actions">
+
+          <a href="#about" class="btn primary">
+
+            اعرف اكتر.
+
+            <i class="fa-solid fa-arrow-left"></i>
+
+          </a>
+
+
+          <a href="#contact" class="btn outline">
+
+            تواصل معنا
+
+          </a>
+
+        </div>
+
+      </div>
+
+
+      <div class="teacher-visual">
+
+        <div class="glow"></div>
+
+
+        <div class="photo-frame">
+
+          <img src="Images/profile5.png"
+               alt="مستر عمرو البارودي"
+               style="width:100%;height:100%;object-fit:cover;object-position:center;border-radius:132px 132px 17px 17px">
+
+        </div>
+
+
+        <div class="formula">
+          F = m × a
+        </div>
+
+
+        <div class="mini-card">
+
+          <i class="fa-solid fa-atom"></i>
+
+          <span>
+
+            الفيزياء<br>
+
+            <b>بمنظور جديد</b>
+
+          </span>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- ABOUT -->
+
+    <section id="about" class="section about">
+
+      <div class="section-heading">
+
+        <p>نبذة مختصرة</p>
+
+        <h2>
+          ليه لازم<span> تاخد معانا؟</span>
+        </h2>
+
+      </div>
+
+
+      <div class="about-grid">
+
+        <div class="about-copy">
+
+          <h3>
+
+            هدفنا و
+
+            <span style="color:#00c9df">
+              مُميزاتنا
+            </span>
+
+          </h3>
+
+
+          <p>
+
+            نبسطلك الفيزياء بطريقة سهلة وممتعة.
+            وندربك على الأمتحان سواء كنت طالب على
+
+            <a class="inline-link"
+               href="https://amr-elbaroody.com/"
+               target="_blank"
+               rel="noopener">
+              المنصة
+            </a>
+
+            أو طالب في
+
+            <a class="inline-link"
+               href="#centers">
+              سنتر
+            </a>.
+
+          </p>
+
+
+          <div class="stats">
+
+            <div>
+              <b>+10</b>
+              <span>سنة خبرة</span>
+            </div>
+
+            <div>
+              <b>+1000</b>
+              <span>طالب وطالبة</span>
+            </div>
+
+            <div>
+              <b>+10</b>
+              <span>سنتر متاح</span>
+            </div>
+
+            <div>
+              <b>100%</b>
+              <span>دعم ومتابعة</span>
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <div class="quote">
+
+          <i class="fa-solid fa-quote-right"></i>
+
+          <p>
+            عافر حلمك يستاهل!
+          </p>
+
+          <span>
+            — مستر عمرو البارودي
+          </span>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- SUPERVISORS -->
+
+    <section id="supervisors" class="section supervisors">
+
+  <div class="section-heading">
+    <p>فريق الاشراف</p>
+    <h2>المشرفون <span>مع المستر</span></h2>
+  </div>
+
+  <div class="supervisor-groups">
+
+    <!-- مشرفين القاعة -->
+    <article class="group-card">
+
+      <div class="group-title">
+
+        <span class="icon-box">
+          <i class="fa-solid fa-chalkboard-user"></i>
+        </span>
+
+        <div>
+          <h3>مشرفين القاعة</h3>
+          <p>مسؤولون عن التنظيم داخل السناتر</p>
+        </div>
+
+      </div>
+
+      <div class="people-list">
+
+        <div>
+          <span class="icon-box">
+            <i class="fa-solid fa-user"></i>
+          </span>
+
+          <span>
+            <b>المشرف مصطفى</b>
+            <small>مشرف قاعة</small>
+          </span>
+
+          <a href="tel:+20132677694" class="supervisor-phone">T : 01032677694</a>
+        </div>
+
+        <div>
+          <span class="icon-box">
+            <i class="fa-solid fa-user"></i>
+          </span>
+
+          <span>
+            <b>المشرف نور</b>
+            <small>مشرف قاعة</small>
+          </span>
+
+          <a href="tel:+201023673253" class="supervisor-phone">T : 01023673253</a>
+        </div>
+
+        <div>
+          <span class="icon-box">
+            <i class="fa-solid fa-user"></i>
+          </span>
+
+          <span>
+            <b>المشرف عمر</b>
+            <small>مشرف قاعة</small>
+          </span>
+
+          <a href="tel:+201152404307" class="supervisor-phone">T : 01152404307</a>
+        </div>
+
+      </div>
+
+    </article>
+
+
+    <!-- مشرفين المادة العلمية -->
+    <article class="group-card accent">
+
+      <div class="group-title">
+
+        <span class="icon-box">
+          <i class="fa-solid fa-flask"></i>
+        </span>
+
+        <div>
+          <h3>مشرفين المادة العلمية</h3>
+          <p>للدعم والمتابعة والإجابة عن الأسئلة</p>
+        </div>
+
+      </div>
+
+      <div class="people-list">
+
+        <div>
+          <span class="icon-box">
+            <i class="fa-solid fa-user"></i>
+          </span>
+
+          <span>
+            <b>الأستاذ حسام</b>
+            <small>مشرف مادة علمية</small>
+          </span>
+
+          <a href="tel:+201020642713" class="supervisor-phone">T : 01020642713</a>
+        </div>
+
+        <div>
+          <span class="icon-box">
+            <i class="fa-solid fa-user"></i>
+          </span>
+
+          <span>
+            <b>إسلام</b>
+            <small>مشرف مادة علمية</small>
+          </span>
+
+          <a href="tel:+201101824470" class="supervisor-phone">T : 01101824470</a>
+        </div>
+
+        <div>
+          <span class="icon-box">
+            <i class="fa-solid fa-user"></i>
+          </span>
+
+          <span>
+            <b>سما</b>
+            <small>مشرف مادة علمية</small>
+          </span>
+
+          <a href="tel:+201019302957" class="supervisor-phone">T : 01019302957</a>
+        </div>
+
+      </div>
+
+    </article>
+
+
+    <!-- مشرفين المنصة ومعلومات السناتر -->
+    <article class="group-card">
+
+      <div class="group-title">
+
+        <span class="icon-box">
+          <i class="fa-solid fa-headset"></i>
+        </span>
+
+        <div>
+          <h3>مشرفين المنصة ومعلومات السناتر</h3>
+          <p>للاستفسار عن المنصة والسناتر</p>
+        </div>
+
+      </div>
+
+      <div class="people-list">
+
+        <div>
+          <span class="icon-box">
+            <i class="fa-solid fa-location-dot"></i>
+          </span>
+
+          <span>
+            <b>رويدا</b>
+            <small>للاستفسار عن السناتر</small>
+          </span>
+
+          <a href="tel:+201063716988" class="supervisor-phone">T : 01063716988</a>
+        </div>
+
+        <div>
+          <span class="icon-box">
+            <i class="fa-solid fa-location-dot"></i>
+          </span>
+
+          <span>
+            <b>جنى</b>
+            <small>للاستفسار عن السناتر</small>
+          </span>
+
+          <a href="tel:+201141647562" class="supervisor-phone">T : 01141647562</a>
+        </div>
+
+        <div>
+          <span class="icon-box">
+            <i class="fa-solid fa-globe"></i>
+          </span>
+
+          <span>
+            <b>محمد</b>
+            <small>للاستفسار عن المنصة</small>
+          </span>
+
+          <a href="tel:+201119166071" class="supervisor-phone">T : 01119166071</a>
+        </div>
+
+      </div>
+
+    </article>
+
+  </div>
+
+</section>
+    <!-- CENTERS -->
+
+    <section id="centers" class="section centers">
+
+      <div class="section-heading">
+
+        <p>أماكننا</p>
+
+        <h2>
+          السناتر <span>المتاحة</span>
+        </h2>
+
+
+        <a class="text-link" href="#contact">
+
+          استفسر عن أقرب سنتر
+
+          <i class="fa-solid fa-arrow-left"></i>
+
+        </a>
+
+      </div>
+
+
+      <div class="centers-grid">
+
+
+        <!-- السنتر الأول -->
+
+        <article class="center-card">
+
+          <div class="center-image">
+
+            <i class="fa-solid fa-image"></i>
+
+            <span>
+              الاوائل
+            </span>
+
+          </div>
+
+
+          <div class="center-content">
+
+            <span class="tag">
+              القاهرة
+            </span>
+
+
+            <h3>
+              سنتر الاوائل التعليمي
+            </h3>
+
+
+            <p>
+
+              <i class="fa-solid fa-location-dot"></i>
+
+
+              <a class="map-link"
+                 href="https://www.google.com/maps/place/%D8%B3%D9%86%D8%AA%D8%B1+%D8%A7%D9%84%D8%A3%D9%88%D8%A7%D8%A6%D9%84+%D8%A7%D9%84%D8%AA%D8%B9%D9%84%D9%8A%D9%85%D9%89%E2%80%AD/@30.1316748,31.3180924,19z/data=!4m6!3m5!1s0x145815addc8b89cd:0x3f48e389c9b80c4a!8m2!3d30.131658!4d31.3181113!16s%2Fg%2F11fksskdmg"
+                 target="_blank"
+                 rel="noopener">
+
+                48J9+M69، المطرية شارع المشروع، الونش،، عين شمس الغربية، محافظة القاهرة
+
+              </a>
+
+            </p>
+
+
+            <div class="manager">
+
+              <span>
+                إدارة السنتر
+              </span>
+
+              <b>
+                أ/ اسم المدير
+              </b>
+
+
+              <a href="tel:+201000000000">
+
+                <i class="fa-solid fa-phone"></i>
+
+                01X XXX XXXX
+
+              </a>
+
+            </div>
+
+          </div>
+
+        </article>
+
+
+        <!-- السنتر الثاني -->
+
+        <article class="center-card">
+
+          <div class="center-image">
+
+            <i class="fa-solid fa-image"></i>
+
+            <span>
+              فايف ستار
+            </span>
+
+          </div>
+
+
+          <div class="center-content">
+
+            <span class="tag">
+              القاهرة
+            </span>
+
+
+            <h3>
+              سنتر فايف ستار
+            </h3>
+
+
+            <p>
+
+              <i class="fa-solid fa-location-dot"></i>
+
+
+              <a class="map-link"
+                 href="https://maps.app.goo.gl/LwLnV3BzofkPHzcB9"
+                 target="_blank"
+                 rel="noopener">
+
+                الخصوص: شارع عبدالباقي حسين بجوار صيدلية د/سعيد امام
+
+              </a>
+
+            </p>
+
+
+            <div class="manager">
+
+              <span>
+                إدارة السنتر
+              </span>
+
+              <b>
+                أ/ اسم
+              </b>
+
+
+              <a href="tel:+201000000000">
+
+                <i class="fa-solid fa-phone"></i>
+
+                01X XXX XXXX
+
+              </a>
+
+            </div>
+
+          </div>
+
+        </article>
+
+
+        <!-- السنتر الثالث -->
+
+        <article class="center-card">
+
+          <div class="center-image">
+
+            <i class="fa-solid fa-image"></i>
+
+            <span>
+              الفاتح
+            </span>
+
+          </div>
+
+
+          <div class="center-content">
+
+            <span class="tag">
+              القاهرة
+            </span>
+
+
+            <h3>
+              سنتر الفاتح التعليمي
+            </h3>
+
+
+            <p>
+
+              <i class="fa-solid fa-location-dot"></i>
+
+
+              <a class="map-link"
+                 href="https://maps.app.goo.gl/qNYPqTDXf6JQDQ2E8"
+                 target="_blank"
+                 rel="noopener">
+
+                ٤٨ شارع G6 + ٤P4، عزبة الباشا، عين شمس الغربية، المطرية، محافظة القاهرة، ٤٥٣٣٢٣٠.
+
+              </a>
+
+            </p>
+
+
+            <div class="manager">
+
+              <span>
+                إدارة السنتر
+              </span>
+
+              <b>
+                أ/ اسم
+              </b>
+
+
+              <a href="tel:+200000000000">
+
+                <i class="fa-solid fa-phone"></i>
+
+                01X XXX XXXX
+
+              </a>
+
+            </div>
+
+          </div>
+
+        </article>
+
+<article class="center-card">
+
+          <div class="center-image">
+
+            <i class="fa-solid fa-image"></i>
+
+            <span>
+              عطية نصار
+            </span>
+
+          </div>
+
+
+          <div class="center-content">
+
+            <span class="tag">
+              القاهرة
+            </span>
+
+
+            <h3>
+              سنتر عطية نصار المرج
+            </h3>
+
+
+            <p>
+
+              <i class="fa-solid fa-location-dot"></i>
+
+
+              <a class="map-link"
+                 href="https://maps.app.goo.gl/VLgfvUxC9x5kpsfLA"
+                 target="_blank"
+                 rel="noopener">
+
+               أرض الشوافعة، كفر الشرفاء، المرج، محافظة القاهرة، ٤٦٢٠٢٢١.
+
+              </a>
+
+            </p>
+
+
+            <div class="manager">
+
+              <span>
+                إدارة السنتر
+              </span>
+
+              <b>
+                أ/ اسم
+              </b>
+
+
+              <a href="tel:+200000000000">
+
+                <i class="fa-solid fa-phone"></i>
+
+                01X XXX XXXX
+
+              </a>
+
+            </div>
+
+          </div>
+
+        </article>
+
+        
+        <article class="center-card">
+
+          <div class="center-image">
+
+            <i class="fa-solid fa-image"></i>
+
+            <span>
+             3M
+             </span>
+
+          </div>
+
+
+          <div class="center-content">
+
+            <span class="tag">
+              القاهرة
+            </span>
+
+
+            <h3>
+             سنتر 3M الخصوص
+            </h3>
+
+
+            <p>
+
+              <i class="fa-solid fa-location-dot"></i>
+
+
+              <a class="map-link"
+                 href="https://maps.app.goo.gl/8zjGTwVwRBPJMVHF6"
+                 target="_blank"
+                 rel="noopener">
+
+               طريق الخصوص العمومي, بجوار هايبر ماركت الا بحر
+
+              </a>
+
+            </p>
+
+
+            <div class="manager">
+
+              <span>
+                إدارة السنتر
+              </span>
+
+              <b>
+                أ/ اسم
+              </b>
+
+
+              <a href="tel:+200000000000">
+
+                <i class="fa-solid fa-phone"></i>
+
+                01X XXX XXXX
+
+              </a>
+
+            </div>
+
+          </div>
+
+        </article>
+
+        <article class="center-card">
+
+          <div class="center-image">
+
+            <i class="fa-solid fa-image"></i>
+
+            <span>
+            عبده الطاهر
+             </span>
+
+          </div>
+
+
+          <div class="center-content">
+
+            <span class="tag">
+              القاهرة
+            </span>
+
+
+            <h3>
+            سنتر عبده الطاهر
+            </h3>
+
+
+            <p>
+
+              <i class="fa-solid fa-location-dot"></i>
+
+
+              <a class="map-link"
+                 href="https://maps.app.goo.gl/QfTcdaAN5hwGUExCA"
+                 target="_blank"
+                 rel="noopener">
+
+              شارع الدكتورة عايدة، ٣٠، الزيتون القبلية، الأميرية، محافظة القاهرة، ٤٥١٠٤٢٣.
+
+              </a>
+
+            </p>
+
+
+            <div class="manager">
+
+              <span>
+                إدارة السنتر
+              </span>
+
+              <b>
+                أ/ اسم
+              </b>
+
+
+              <a href="tel:+200000000000">
+
+                <i class="fa-solid fa-phone"></i>
+
+                01X XXX XXXX
+
+              </a>
+
+            </div>
+
+          </div>
+
+        </article>
+
+      </div>
+
+    </section>
+
+
+    <!-- CONTACT -->
+
+    <section id="contact" class="section contact">
+
+      <div>
+
+        <p class="eyebrow">
+
+          <span></span>
+
+          نحن هنا لمساعدتك
+
+        </p>
+
+
+        <h2>
+
+          جاهز تبدأ
+
+          <em>
+            معانا
+          </em>
+
+        </h2>
+
+
+        <p>
+
+          لأي استفسار عن الحجز أو المواعيد،
+          تواصل مع فريق الاشراف.
+
+        </p>
+
+      </div>
+
+
+      <div class="contact-options">
+
+
+        <a class="assistant-contact"
+           href="tel:+201063716988">
+
+          <i class="fa-solid fa-headset"></i>
+
+
+          <span>
+
+            مساعد المستر
+
+            <br>
+
+            <b>
+              01063716988
+            </b>
+
+          </span>
+
+
+          <i class="fa-solid fa-arrow-left"></i>
+
+        </a>
+
+
+        <div class="socials">
+
+
+          <a href="https://www.facebook.com/hertez.lfezya"
+             target="_blank"
+             rel="noopener"
+             aria-label="Facebook">
+
+            <i class="fa-brands fa-facebook-f"></i>
+
+          </a>
+
+
+          <a href="https://www.facebook.com/groups/1072818156508487/"
+             target="_blank"
+             rel="noopener"
+             aria-label="Facebook Group">
+
+            <i class="fa-solid fa-users"></i>
+
+          </a>
+
+
+          <a href="#"
+             aria-label="Instagram">
+
+            <i class="fa-brands fa-instagram"></i>
+
+          </a>
+
+
+          <a href="https://www.youtube.com/@mr.amrelbaroody612"
+             target="_blank"
+             rel="noopener"
+             aria-label="YouTube">
+
+            <i class="fa-brands fa-youtube"></i>
+
+          </a>
+
+
+          <a href="https://www.tiktok.com/@amr.el.baroody"
+             target="_blank"
+             rel="noopener"
+             aria-label="TikTok">
+
+            <i class="fa-brands fa-tiktok"></i>
+
+          </a>
+
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <footer>
+
+      Made By Eslam Ahmed
+
+      <i class="fa-solid fa-atom"></i>
+
+    </footer>
+
+
+  </main>
+
+
+  <script>
+
+    const button = document.querySelector('.menu-button');
+
+    const sidebar = document.querySelector('.sidebar');
+
+    const overlay = document.querySelector('.overlay');
+
+
+    const toggle = () => {
+
+      sidebar.classList.toggle('open');
+
+      overlay.classList.toggle('show');
+
+
+      button.setAttribute(
+        'aria-expanded',
+        sidebar.classList.contains('open')
+      );
+
+    };
+
+
+    button.addEventListener('click', toggle);
+
+    overlay.addEventListener('click', toggle);
+
+
+    document.querySelectorAll('.nav-links a').forEach(a => {
+
+      a.addEventListener('click', () => {
+
+        if (
+          innerWidth < 900 &&
+          sidebar.classList.contains('open')
+        ) {
+
+          toggle();
+
+        }
+
+      });
+
+    });
+
+  </script>
+
+</body>
+</html>
+```
