@@ -1300,54 +1300,146 @@ footer i {
 }
 
 /* =========================
-   محمد - الكارت المميز
+   محمد - كارت إداري المنصة
 ========================= */
 
-.people-list > .featured-supervisor {
+.platform-admin-card {
   position: relative;
-  border: 1px solid #d9b44a;
-  border-radius: 10px;
-  background: #fffdf5;
-  box-shadow: 0 3px 12px #d9b44a22;
-  cursor: pointer;
-
-  /* زيادة المساحة بين المحتوى والـ golden border */
-  padding: 14px 12px;
 }
 
-/* أيقونة محمد */
-.people-list > .featured-supervisor > .icon-box {
+
+/* معلومات محمد */
+
+.platform-admin-info {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+
+  position: relative;
+  z-index: 2;
+}
+
+
+/* الصورة */
+
+.platform-admin-avatar {
+  width: 58px;
+  height: 58px;
+
+  flex-shrink: 0;
+
+  object-fit: cover;
+
+  border-radius: 50%;
+
+  border: 2px solid #d4af37;
+
   background: #fff4c7;
-  color: #c49718;
-  border: 1px solid #e3c45c;
+
+  box-shadow:
+    0 3px 10px rgba(212, 175, 55, .18);
 }
 
-/* اسم محمد */
-.people-list > .featured-supervisor b {
-  color: #8c6a08;
+
+/* الاسم والوظائف */
+
+.platform-admin-name {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
 }
 
-/* رقم الهاتف */
-.people-list > .featured-supervisor .supervisor-phone {
-  color: #b28712;
-}
-
-/* شارة منصة */
-.people-list > .featured-supervisor .platform-badge {
-  position: absolute;
-  top: -8px;
-  right: 10px;
-  padding: 1px 7px;
-  border-radius: 10px;
-  background: #d4af37;
-  color: white;
-  font-size: 7px;
+.platform-admin-name b {
+  color: #92700f;
+  font-size: 16px;
   font-weight: 800;
-  line-height: 1.6;
 }
 
-/* Hover */
-.people-list > .featured-supervisor:hover {
+.platform-admin-name span {
+  color: #555;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.platform-admin-name small {
+  color: #a18120;
+  font-size: 10px;
+  font-weight: 500;
+}
+
+
+/* زرار زيارة المنصة */
+
+.platform-link {
+  position: absolute;
+
+  left: 50%;
+  top: 50%;
+
+  transform: translate(-50%, -50%);
+
+  z-index: 5;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 7px 16px;
+
+  color: #a18120;
+  background: #fffaf0;
+
+  border: 1px solid #d4af37;
+  border-radius: 20px;
+
+  text-decoration: none;
+
+  font-size: 10px;
+  font-weight: 700;
+
+  white-space: nowrap;
+
+  transition: .2s ease;
+}
+
+.platform-link:hover {
+  color: #fff;
+
+  background: #d4af37;
+
   border-color: #c49a20;
-  box-shadow: 0 5px 16px #d9b44a35;
+
+  transform: translate(-50%, -50%) translateY(-2px);
+}
+
+
+/* =========================
+   Mobile
+========================= */
+
+@media (max-width: 620px) {
+
+  .platform-admin-card {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .platform-admin-info {
+    justify-content: flex-start;
+  }
+
+  .platform-link {
+    position: static;
+
+    transform: none;
+
+    align-self: center;
+
+    margin-top: 5px;
+  }
+
+  .platform-link:hover {
+    transform: translateY(-2px);
+  }
+
 }
