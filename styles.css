@@ -1448,18 +1448,26 @@ footer i {
   text-shadow: 0 0 10px #d4af37;
 }
 
-.scientific-supervisor {
-  color:#25D366;
-   
-    transition: 0.3s ease;
-    display: inline-block;
+/* أرقام المشرفين العلميين - WhatsApp */
+.supervisor-phone.scientific-supervisor {
+  color: #25D366 !important;
+  transition: 0.3s ease;
 }
 
-.scientific-supervisor:hover {
-    color: #075E54;
-    transform: scale(1.05);
+.supervisor-phone.scientific-supervisor i {
+  color: #25D366 !important;
 }
 
-.scientific-supervisor:active {
-    transform: scale(0.95);
+.supervisor-phone.scientific-supervisor:hover {
+  color: #075E54 !important;
+  transform: scale(1.05);
+  text-decoration: none;
+}
+
+.supervisor-phone.scientific-supervisor:hover i {
+  color: #075E54 !important;
+}
+
+.supervisor-phone.scientific-supervisor:active {
+  transform: scale(0.95);
 }
