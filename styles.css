@@ -1447,3 +1447,19 @@ footer i {
   color: #d4af37;
   text-shadow: 0 0 10px #d4af37;
 }
+
+.scientific-supervisor {
+  color:#25D366;
+   
+    transition: 0.3s ease;
+    display: inline-block;
+}
+
+.scientific-supervisor:hover {
+    color: #075E54;
+    transform: scale(1.05);
+}
+
+.scientific-supervisor:active {
+    transform: scale(0.95);
+}
